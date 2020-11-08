@@ -1,0 +1,80 @@
+main{
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-auto-rows: minmax(100vh, auto);
+}
+
+#content{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:2fr 4fr; 
+    background-color: blue;
+    height: 100%;
+}
+
+#media{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    background-color: coral;
+    height: 100%;
+}
+
+#title{
+    background-color: red;
+    margin:30px;
+}
+
+#text{
+    background-color: cornflowerblue;
+    margin: 30px;
+}
+
+#waypoints{
+    background-color: darkblue;
+    margin: 20px;
+}
+
+#nav-displays{
+    background-color: darkblue;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: 2fr 1fr;
+}
+
+
+#flight-display{
+    grid-column-start: 1; 
+    grid-column-end: 2;
+    
+    background-color: darkgoldenrod;
+    margin: 10px;
+}
+
+#animation{
+    grid-column-start: 2; 
+    grid-column-end: 4; 
+    background-color: darkgoldenrod;
+    margin: 10px;
+}
+
+#ECAM{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background-color: darkgoldenrod;
+    margin: 10px;
+}
+
+#side-stick-left{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color: darkgoldenrod;
+    margin: 10px;
+}
+
+#side-stick-right{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    background-color: darkgoldenrod;
+    margin: 10px;
+}
