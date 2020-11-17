@@ -1,44 +1,73 @@
+body{
+    background-color: rgb(27, 24, 24) ;
+}
+
 main{
   display: grid;
-  grid-template-columns: 2fr 4fr;
+  grid-template-columns: 1.5fr 4fr;
   grid-auto-rows: minmax(100vh, auto);
+  position: relative;
 }
+
 
 #content{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows:2fr 4fr; 
-    background-color: blue;
-    height: 100%;
+    grid-template-rows:auto;
+    height: fit-content;
+}
+
+#intro-image{
+    max-width:100%;
+    max-height: 100%;
+    margin-top: 5%;
 }
 
 #media{
     display: grid;
-    grid-template-columns: 1fr 5fr;
-    background-color: coral;
-    height: 100%;
+    grid-template-columns: .75fr 6fr;
+    height: 110%;
+    top: 0;
+    max-height: 100vh;
+    opacity: 0;
+    position: sticky;
 }
 
 #title{
-    background-color: red;
     margin:30px;
+    margin-bottom: 100%;
+    height: fit-content;
+    text-align: center;
+    transform:translateY(100%);
+    font-family: "B612";
+    color: rgb(3, 245, 15);
+    background-color: black;
+    padding: 5%;
+    
 }
 
-#text{
-    background-color: cornflowerblue;
+.text-scroll{
+    text-align: left;
+    color: rgb(3, 245, 15);
+    font-family: "B612";
     margin: 30px;
+    height: fit-content;
+    padding: 3%;
+    background-color: black;
+    margin-top: 70%;
 }
 
 #waypoints{
-    background-color: darkblue;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
     margin: 20px;
 }
 
 #nav-displays{
-    background-color: darkblue;
     margin: 20px;
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-columns: 3fr 2fr 2fr;
     grid-template-rows: 2fr 1fr;
 }
 
@@ -46,35 +75,107 @@ main{
 #flight-display{
     grid-column-start: 1; 
     grid-column-end: 2;
-    
-    background-color: darkgoldenrod;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
     margin: 10px;
+    display: grid;
+    background-color: black;
+    grid-template-columns:1fr 3fr 1fr ;
+    grid-template-rows: 1fr 3fr 1fr;
 }
 
 #animation{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
     grid-column-start: 2; 
     grid-column-end: 4; 
-    background-color: darkgoldenrod;
     margin: 10px;
 }
 
 #ECAM{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
     grid-column-start: 1;
     grid-column-end: 2;
-    background-color: darkgoldenrod;
     margin: 10px;
 }
 
 #side-stick-left{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
     grid-column-start: 2;
     grid-column-end: 3;
-    background-color: darkgoldenrod;
     margin: 10px;
 }
 
 #side-stick-right{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
     grid-column-start: 3;
     grid-column-end: 4;
-    background-color: darkgoldenrod;
     margin: 10px;
 }
+
+#flight-mode-anounciator{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-top: 10px;
+    background-color:  rgb(39, 34, 34);
+}
+
+#speed-scale{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin: 10px;
+    background-color:  rgb(39, 34, 34);
+}
+
+#attitude-indicator{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin: 10px;
+    background-color: black;
+}
+
+#altimeter{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin: 10px;
+    background-color:  rgb(39, 34, 34);
+}
+
+#horizontal-heading{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    margin: 10px;
+    background-color:  rgb(39, 34, 34);
+}
+
+/**/
