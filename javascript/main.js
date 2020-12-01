@@ -63,7 +63,7 @@ function init() {
 			content: '#content', // the step container
 			step: '.step', // the step elements
 			offset: 0.5, // set the trigger to be 1/2 way down screen
-			debug: true, // display the trigger offset for testing
+			debug: false, // display the trigger offset for testing
 		})
 		.onStepEnter(handleStepEnter)
 		//.onContainerExit(handleContainerExit);
