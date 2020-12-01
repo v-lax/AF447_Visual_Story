@@ -17,18 +17,17 @@ main{
     height: fit-content;
 }
 
-#intro-image{
+#plane-image{
     max-width:100%;
-    max-height: 100%;
-    margin-top: 5%;
+    max-height:100%;
 }
 
 #media{
     display: grid;
     grid-template-columns: .75fr 6fr;
-    height: 110%;
+    height: 100%;
     top: 0;
-    max-height: 100vh;
+    max-height: 90vh;
     opacity: 0;
     position: sticky;
 }
@@ -48,24 +47,67 @@ main{
 
 .text-scroll{
     text-align: left;
-    color: rgb(3, 245, 15);
-    font-family: "B612";
+    color: rgb(221, 221, 221);
+    font-family: 'Roboto', sans-serif;
     margin: 30px;
     height: fit-content;
     padding: 3%;
-    background-color: black;
+    background-color: rgb(37, 37, 37);
     margin-top: 70%;
+}
+.intro-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:rgb(236, 236, 236) ;
+}
+.fs-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:rgb(240, 192, 88) ;
+}
+
+.ar-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:#78e874;
+}
+.ls-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:#f05454 ;
+}
+
+.al-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:#528afa;
+}
+
+.dp-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:#fa9e52;
+}
+.cf-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:#fddb3a;
+}
+.fn-text-titles{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color:#c81912;
 }
 
 #waypoints{
     border-width: 1px;
     border-style: solid;
     border-color: white;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 #nav-displays{
-    margin: 20px;
+    /* margin: 20px; */
     display: grid;
     grid-template-columns: 3fr 2fr 2fr;
     grid-template-rows: 2fr 1fr;
@@ -78,7 +120,7 @@ main{
     border-width: 1px;
     border-style: solid;
     border-color: white;
-    margin: 10px;
+    /* margin: 10px; */
     display: grid;
     background-color: black;
     grid-template-columns:1fr 3fr 1fr ;
@@ -90,8 +132,40 @@ main{
     border-style: solid;
     border-color: white;
     grid-column-start: 2; 
-    grid-column-end: 4; 
-    margin: 10px;
+    grid-column-end: 4;
+    display: grid; 
+    grid-template-columns: auto;
+    grid-template-rows: 2fr 1fr;
+    /* margin: 10px; */
+}
+#media-player{
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end:2;
+}
+
+#media-controls{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end:3;
+    background-color: grey;
+}
+
+#play-button{
+    padding-top: 50%;
+    grid-column-start:2;
+    grid-column-end: 3;
+}
+
+#restart-button{
+    padding-top: 50%;
+    grid-column-start:3;
+    grid-column-end: 4;
 }
 
 #ECAM{
@@ -100,7 +174,7 @@ main{
     border-color: white;
     grid-column-start: 1;
     grid-column-end: 2;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
 #side-stick-left{
@@ -109,7 +183,7 @@ main{
     border-color: white;
     grid-column-start: 2;
     grid-column-end: 3;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
 #side-stick-right{
@@ -118,7 +192,7 @@ main{
     border-color: white;
     grid-column-start: 3;
     grid-column-end: 4;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
 #flight-mode-anounciator{
@@ -178,4 +252,43 @@ main{
     background-color:  rgb(39, 34, 34);
 }
 
-/**/
+ .displays {
+    margin-top:15%;
+    margin-bottom:25%;
+} 
+.flapper {
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.inputarea {
+    margin: 24px 0;
+}
+
+#typesomething,
+#showme {
+    font-family: Roboto Condensed;
+    font-size: 18px;
+    padding: 14px;
+    background-color: #EEE;
+    color: #333;
+    border: 0;
+    height: 170px;
+}
+
+#typesomething {
+    width: 300px;
+}
+
+#showme:hover {
+    background-color: #DDD;
+}
+
+#showme:active {
+    background-color: #CCC;
+}
+
+div.inline {
+    display: inline-block;
+    vertical-align: bottom;
+}

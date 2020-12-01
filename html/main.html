@@ -5,22 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Titanic of the Skies</title>
     <link rel="stylesheet" href=../css/main.css>
+    <link href="../css/flapper.css" type="text/css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=B612&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="transform/dist/jquery.transform-0.9.3.min.js"></script>
+    <script src="../javascript/jquery.flapper.js"></script>
+    <script src="../javascript/flapdemo.js"></script>
+    <script src="http://threejs.org/build/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
   </head>
   <body>
+    <div class="page">
+        <div class="displays">
+            <div class="activity"></div><input class="display M" />
+            <div class="activity"></div><input class="display M" />
+            <div class="activity"></div><input class="display M" />
+    </div>
     <main>
       <section id="content">
-        <div id="title" class="step" data-step="0">
-          <h1>Titanic of the Skies</h1>
-          <h2>The Crash of Air France Flight 447</h2>
-        </div>
-
         <div class="text-scroll step" data-step="1">
+          <h3 class="intro-text-titles">Intro</h3>
           On May 31st, 2009 216 passengers and 12 flight crew boarded Air France
           flight 447 on route to Paris Charles de Gaulle from Rio de Janeiro.
           None of these individuals would ever make it to their final
@@ -31,114 +42,199 @@
           what led AF447 to crash into the Atlantic ocean, killing all 228
           individuals on board.
         </div>
-        <div class="text-scroll step" data-step="2">
-          Before we jump into the story and start examining what happened, it is
-          going to be extremely useful to first understand how airplanes work.
-          There are three main concepts that we will cover. These concepts will
-          help you understand the pilots actions and how that impacts the
-          airplane. These concepts are by no means exhaustive. Airplane
-          aerodynamics are extremely complicated but having this basic
-          understanding will help as we walk through this story.
-        </div>
-        <div class="text-scroll step" data-step="3">
-          The first concept I want to focus on is lift. Lift (and a combination
-          of a few other items) is what helps a 230 ton piece of metal get up
-          into the sky. It’s also what allows birds to fly. In order to
-          understand lift, we will focus on a key component of any airplane or
-          creature that can fly, the wings. The shape of the wing is what is
-          known as an airfoil. This shape causes the pressure at the bottom of
-          the wing to be higher than the pressure at the top of the wing. This
-          pressure difference creates a lift force. And if our lift force is
-          greater than the gravitational force pulling down on our plane, then
-          our plane is going to climb and increase in altitude.
-        </div>
-        <div class="text-scroll step" data-step="4">
-          Now we have got our plane into the sky. How do we keep it in the air
-          and keep the plane moving forward? Our plane stays in the air,
-          constantly moving forward because there is 0 net force acting on the
-          plane. What does that mean? Well, there are 4 main forces acting on an
-          airplane as it is moving through the sky. It experiences a
-          gravitational force (the force pulling the plane toward the ground), a
-          lift force (the force pushing the plane up and away from the ground),
-          a thrust force (the force created by the engines propelling the plane
-          forward), and a drag force (force slowing the plane down as it moves
-          forward and hits air particles). If all these forces are equal and
-          cancel each other out then our plane will stay in the sky and stay in
-          motion. This is basically Newton’s third law of motion, an object in
-          motion stays in motion and an object at rest stays at rest.
-        </div>
-        <div class="text-scroll step" data-step="5">
-          Now that we know how a plane stays in the sky, we can look at how a
-          pilot is able to steer it. The cockpit of an Airbus A330, the type of
-          airplane that AF447 was, has a flight control system known as “fly by
-          wire”. If you look in the cockpit you will see that next to both pilot
-          seats there are what look like a video game controller. This is known
-          as the “side-stick” and is what the pilot uses to steer the airplane.
-          In a fly by wire system, inputs to the side stick (this video
-          game-like controller) are converted to electronic signals and
-          transmitted through wires and sent to the flight computers. The flight
-          control computers determine how to move control surfaces on the
-          wings,tail, or elevator. There are three main axes in which an
-          airplane can move. These three main axes are known as pitch, yaw, and
-          roll. Pitch moves the nose of the airplane up and down and is
-          controlled adjusting the flaps on the elevator of the plane. Yaw moves
-          the nose of the airplane left and right and is controlled by adjusting
-          the flaps on the tail of the plane. And roll, moves the airplane along
-          the axis running from the nose to the tail of an airplane, and is
-          controlled by the flaps located on both of the main wings.
-        </div>
-        <div class="text-scroll step" data-step="6">
-          01:35:00 - We will pick up our story at 1 hour and 35 minutes. The
-          Captain, Marc Dubois, is pilot not flying (PNF), and is sitting in the
-          left seat in the cockpit. First officer, Pierre Cedric Bonin, is pilot
-          flying (PF), and is sitting in the right seat in the cockpit. Because
-          this is a long haul flight, there was also a second First officer,
-          David Robert, who was outside of the cockpit in the crew quarters, on
-          his break. The airplane arrives at INTOL point. INTOL point is what is
-          known as a waypoint. A waypoint is just a set of coordinates that
-          refers to the plane’s position along a path. Pilots use waypoints to
-          navigate to the final destination and use it to communicate with air
-          traffic control along the flight path.
-        </div>
-        <div class="text-scroll step" data-step="7">
-          A few moments later Bonin (PF), modifies scale on his flight display.
-          After adjusting the display, Bonin notes “...a thing straight ahead”.
-          Captain Dubois confirms. Unlike most other flights flying through the
-          area at that time, the pilots of AF447 have not updated their flight
-          path to avoid the worst of the storms. The air outside of the aircraft
-          is also unusually warm (still really cold but 12 degrees warmer than
-          usual) and this prevents the aircraft from climbing to avoid the
-          inclement weather. So instead they charge head on into a group of
-          clouds.
-        </div>
-        <div class="text-scroll step" data-step="8">
-          01:51:00 - As they entered this cloud layer the crew dimmed the
-          lighting in the cockpit and turned on the headlights “to see” what was
-          ahead of them. The cockpit also became illuminated by a strange
-          natural phenomena known as “St.Elmos Fire”. It occurs at high
-          altitudes with thunderstorms, and occurs because the surrounding air
-          particles become statically charged.
-        </div>
-        <div class="text-scroll step" data-step="9">
-          2:00:00 - At this moment, Captain Dubois leaves the cockpit to get
-          some rest and first officer David Robert, takes his spot as PNF in the
-          left seat of the cockpit. At this stage, the aircraft has just crossed
-          SALPU point and has entered the Intertropical Convergence Zone. This
-          is an area near the equator that is infamous for having severe
-          thunderstorms. Bonin makes a call to one of the flight attendants
-          informing them that they should expect some rough turbulence in a few
-          minutes, and that he would call back once they were out of it. Bonin
-          never makes the call back.
-        </div>
-        <div class="text-scroll step" data-step="10">
-          2:04:00 - The airplane is approaching ARARO point. At this stage, the
-          aircraft is flying level at an altitude of 35,000 feet at a speed of
+        <section id="flight-school">
+            <div class="text-scroll step" data-step="2">
+                <h3 class="fs-text-titles">Flight School - (FSCHL)</h3>
+                Before we jump into the story and start examining 
+                what happened, it is going to be extremely useful to 
+                first understand the displays you see on the right hand 
+                side of your screen as well as understand how airplanes 
+                work. Let’s start with the displays.
+            </div>
+            <div class="text-scroll step" data-step="3">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                First we have waypoints. A waypoint is just a set of coordinates that refers 
+                to the plane’s position along a path. 
+                Pilots use waypoints to navigate to the final destination 
+                and use it to communicate with air traffic control along the flight 
+                path. We will use it to represent your progress throughout this 
+                story
+            </div>
+            <div class="text-scroll step" data-step="4">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                Second we have our main pilot display. 
+                This is what the pilot uses to fly when they can’t 
+                see or have very low visibility. On the flight display 
+                their are four main features
+            </div>
+            <div class="text-scroll step" data-step="5">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                The first feature is the speed indicator. This 
+                simply displays the planes air speed in knots. 
+            </div>
+            <div class="text-scroll step" data-step="6">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                The second feature is what is know as an Altimeter. This displays
+                the planes current height in feet. 
+            </div>
+            <div class="text-scroll step" data-step="7">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                The third and most important feature is what is called the attitude indicator.
+                It displays the position of the nose of the plane in relation
+                to the horizon. 
+            </div>   
+            <div class="text-scroll step" data-step="8">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                The center dot on the attitude indicator represents the 
+                actual nose of the plane. 
+            </div>
+            <div class="text-scroll step" data-step="9">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                The area in blue represents the sky, and the area in brown
+                represents the ground.
+            </div>
+            <div class='text-scroll step' data-step="10">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                If the nose is pitched up, then you will
+                see more blue.
+            </div>
+            <div class='text-scroll step' data-step="11">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                If the nose is pitched down, then you will see more brown.
+            </div>
+            <div class="text-scroll step" data-step="12">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                When the attitude indicator rotates to the left, that means that the plane
+                is rolling to the right.  
+            </div>
+            <div class="text-scroll step" data-step="13">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                If the attitude indicator is rotating to the right 
+                that means that plane is rolling to the left. It seems very counter-intuitive
+                but you must remember that this attitude indicator represents 
+                the plane in relation to the horizon.
+            </div>
+            <div class="text-scroll step" data-step="14">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                The numbers on the attitude represent that angle of the airplane's 
+                nose in relation to the horizon. So if the nose is at the 10 in the blue 
+                area, that means that the airplanes nose is pitched 10 degrees up. 
+                If the nose is at the 10 in the brown area then that means that the 
+                airplane’s nose is pitched 10 degrees down.
+            </div>
+            <div class="text-scroll step" data-step="15">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                Now that we have reviewed the pilot display, let's finish up with the 
+                rest of the sections. The next section is our main media display. nothing
+                to complicated here. We'll use this display to render a 3D version of the plane
+                so you can understand whats going on, as well as use to display other media
+            </div>
+            <div class="text-scroll step" data-step="16">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                In the bottom left hand corner, we have our ECAM message alert. 
+                ECAM stands for Electronic Centralized Aircraft Monitor. This displays
+                important warnings and messages to the pilots as they are flying.
+            </div>
+            <div class="text-scroll step" data-step="17">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                And last but not least we have our side stick displays. The side-stick is 
+                what the pilot uses to control the airplane. Both pilots have their own
+                side-stick. The display on the left represents the side-stick of the 
+                pilot sitting in the left seat of the cockpit. And the display on the 
+                right represents the side-stick of the pilot sitting in the right seat. 
+                Each display contains a circle at the center. The circle represents the position
+                of the side-stick.
+             </div>
+             <div class="text-scroll step" data-step="18">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                Now that we know what each of the displays mean, we next have to understand
+                how airplanes get up into the air and stay there.
+            </div>
+            <div class="text-scroll step" data-step="19">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                The first concept I want to focus on is lift. Lift (and a combination
+                of a few other items) is what helps a 230 ton piece of metal get up
+                into the sky. In order to understand lift, we will focus on a key component of any airplane or
+                creature that can fly, the wings. The shape of the wing is what is
+                known as an airfoil. This shape causes the pressure at the bottom of
+                the wing to be higher than the pressure at the top of the wing. This
+                pressure difference creates a lift force. And if our lift force is
+                greater than the gravitational force pulling down on our plane, then
+                our plane is going to climb and increase in altitude.
+              </div>
+              <div class="text-scroll step" data-step="20">
+                <h5 class="fs-text-titles">FSCHL</h5>
+                Now we have got our plane into the sky. How do we keep it in the air
+                and keep the plane moving forward? Our plane stays in the air,
+                constantly moving forward because there is 0 net force acting on the
+                plane. What does that mean? Well, there are 4 main forces acting on an
+                airplane as it is moving through the sky. It experiences a
+                gravitational force (the force pulling the plane toward the ground), a
+                lift force (the force pushing the plane up and away from the ground),
+                a thrust force (the force created by the engines propelling the plane
+                forward), and a drag force (force slowing the plane down as it moves
+                forward and hits air particles). If all these forces are equal and
+                cancel each other out then our plane will stay in the sky and stay in
+                motion. This is basically Newton’s third law of motion, an object in
+                motion stays in motion and an object at rest stays at rest.
+              </div>
+              <section id="flight-axis" class="step"data-step="21">
+                <div class="text-scroll">
+                    <h5 class="fs-text-titles">FSCHL</h5>
+                    Now that we know how a plane stays in the sky, we can look at how a
+                    pilot is able to steer it. The cockpit of an Airbus A330, the type of
+                    airplane that AF447 was, has a flight control system known as “fly by
+                    wire”. If you can recall from our brief introduction above, each pilot has a side stick they
+                    use to control the airplane. In a fly by wire system, inputs to the side stick (this video
+                    game-like controller) are converted to electronic signals and
+                    transmitted through wires and sent to the flight computers. The flight
+                    control computers determine how to move control surfaces on the
+                    wings,tail, or elevator. 
+                  </div>
+                  <div class="text-scroll">
+                    <h5 class="fs-text-titles">FSCHL</h5>
+                    There are three main axes in which an airplane can move. These three main axes are known as pitch, yaw, and
+                    roll. Forward and backwards movements of the side-stick control the pitch of the airplane.
+                    Pitch moves the nose of the airplane up and down and is
+                    controlled adjusting the flaps on the elevator of the plane. 
+                  </div>
+                  <div class="text-scroll">
+                    <h5 class="fs-text-titles">FSCHL</h5>
+                    Each pilot has foot pedals that they use to control the yaw of the plane.
+                    Yaw moves the nose of the airplane left and right and is controlled by adjusting
+                    the flaps on the tail of the plane. 
+                  </div>
+                  <div class="text-scroll">
+                    <h5 class="fs-text-titles">FSCHL</h5>
+                    Left and Right movements of the side-stick control the roll of the plane.
+                    And roll, moves the airplane along the axis running from the nose to the tail of an airplane, and is
+                    controlled by the flaps located on both of the main wings.
+                  </div>
+                  <div class="text-scroll">
+                    <h5 class="fs-text-titles">FSCHL</h5>
+                    Now that you understand some basic concepts of how planes fly, Let’s 
+                    dive a little bit deeper into the incidents that occured during the crash
+                    of AF447. 
+                  </div>
+              </section>
+        </section>
+        <div class="text-scroll step" data-step="22">
+            <h3 class="ar-text-titles">ARARO Point - ARARO</h3>
+            We will pick up the story as AF447 is approaching ARARO point. 
+            The pilot flying is Cedric Bonin and his co-pilot is David Robert. 
+            Bonin is sitting in the right seat and Robert is sitting in the left seat.  
+            The captain, Marc Dubois is currently on his break in the crew quarters. 
+        </div>  
+        <div class="text-scroll step" data-step="23">
+          <h5 class="ar-text-titles">ARARO</h5>
+          At this stage, the aircraft is flying level at an altitude of 35,000 feet at a speed of
           Mach .82. The pitch attitude or the angle of the nose of the airplane
           in relation to the horizon was 2.5 degrees and the angle of attack of
           the plane was 3 degrees. All normal and nothing out of the ordinary
           here.
         </div>
-        <div class="text-scroll step" data-step="11">
+        <div class="text-scroll step" data-step="24">
+        <h5 class="ar-text-titles">ARARO</h5>
           The angle of attack is the angle at which the airplane wings meet the
           oncoming air. The higher the angle of attack the greater the lift
           efficiency, BUT (and this is a really really big but) only up to a
@@ -149,31 +245,35 @@
           do with the engines. When a stall occurs, the airplane wings are at
           such a steep angle that the power and thrust provided by the engines
           of the plane can not exceed the drag forces experienced by the
-          airplane. The aircraft then enters a nose high descent straight into
-          the ground. Now, the only way to exit a stall, is to do something that
+          airplane. Now, the only way to exit a stall, is to do something that
           seems really counter-intuitive. You have to push the nose of the
           airplane down and dive, so that the oncoming air can begin to smoothly
           flow over the wing again, thereby producing lift and taking the
           airplane out of the stall.
         </div>
-        <div class="text-scroll step" data-step="12">
-          2:00:05 - The aircraft is currently operating in what is known as
-          “Normal Law”. Under this mode, the flight computers control a large
-          portion of the “fly by wire” system we mentioned above. If for some
-          reason the pilot does something by mistake and pulls the side stick
-          back, pushing the nose of the airplane up, normal law actually
-          prevents this input from fully being translated to changes on the
-          control surfaces on the plane. The computer basically says, “Im in
-          normal mode, and i just received an input that would be too dangerous
-          for this altitude. Because this action would cause a stall at this
-          altitude, I will restrict this input from the pilot and not allow it
-          to go through.” It’s a great fail safe and has contributed a lot to
-          why air travel is so safe these days. AF447 is currently operating
-          under “Normal Law” and everything seems to be going ok, but not for
-          long.
-        </div>
-        <div class="text-scroll step" data-step="13">
-          2:08:00 - Robert notices that they are headed towards an area of
+        <section class="step"data-step="25">
+            <div class="text-scroll">
+                <h5 class="ar-text-titles">ARARO</h5>
+                The aircraft is currently operating in what is known as
+                “Normal Law”. Under this mode, the flight computers control a large
+                portion of the “fly by wire” system we mentioned above. If for some reason
+                the pilot makes side-stick inputs erraticly or by mistake, 
+                The computer basically says, “Im in normal mode, and i just received an input that would be too dangerous
+                for this altitude. Because this action would cause a stall at this
+                altitude, I will restrict this input from the pilot and not allow it
+                to go through.” 
+              </div>
+              <div class="text-scroll">
+                <h5 class="ar-text-titles">ARARO</h5>
+                It’s a great fail safe and has contributed a lot to
+                why air travel is so safe these days. AF447 is currently operating
+                under “Normal Law” and everything seems to be going ok, but not for
+                long.
+              </div>
+        </section>
+        <div class="text-scroll step" data-step="26">
+          <h3 class="ls-text-titles">Loss of Air Speed- LoAS</h3>
+          Robert notices that they are headed towards an area of
           intensive activity and asks Bonin if he can move the aircraft left, so
           that they can dodge this activity. Bonin rolls the plane 20 degrees to
           the left and also reduces the airspeed from .82 mach to .8 mach. This
@@ -181,172 +281,238 @@
           tiny ice crystals hitting the windshield of the aircraft could clearly
           be heard in the cockpit.
         </div>
-        <div class="text-scroll step" data-step="14">
-          2:10:05 - Unknown to both pilots, these ice crystals were clogging up
+        <div class="text-scroll step" data-step="27">
+        <h5 class="ls-text-titles">LoAS</h5>
+          Unknown to both pilots, these ice crystals were clogging up
           the airplane’s pitot tubes. The pitot tubes are located on the front
           of all major aircraft and are instruments that provide vital airspeed
           data to the aircraft’s computers. Because the ice crystals clogged up
           the pitot tubes, accurate air speed data stopped being sent to the
           flight computers, and without accurate airspeed data, AF447’s
           autopilot turned off, sounding an alarm in the cockpit, handing
-          control of the aircraft fully over to the pilots. This also switched
-          the mode on the flight computers from the existing “Normal Law” to
-          “Alternate Law”. In alternate law, the pilot’s inputs are not as
-          scrutinized by the flight computer as under “normal law”, which means
-          that the flight computers can’t prevent any errors or prevent stalls
-          from happening. Everything that just occurred was a normal and logical
-          response by the airplane and was designed this way by the airplane
-          engineers. At this moment, Bonin verbally says “I have the controls.”
+          control of the aircraft fully over to the pilots. 
         </div>
-        <div class="text-scroll step" data-step="15">
-          2:10:07 - Now remember, the airplane is currently flying level (both
-          wings and nose level to the horizon) and the engine thrust set to
-          consistently deliver a nominal .8 mach. The only significant error was
-          the loss of the indication of airspeed, not the actual airspeed
-          itself. All Bonin needs to do is keep the aircraft straight and level
-          and maintain these current conditions. As Bonin takes control, he
-          realizes the plane begins to roll slightly to the right and to correct
-          it all Bonin needs to do is move his side stick a little bit to the
-          left to counteract the roll right. But for some unknown reason, Bonin
-          makes a nose up and left input. Now its not a slight pulling back of
-          the side stick. Bonin jerks the side stick back considerably and to
-          the left. Because Bonin makes this nose up and left input, an alarm
-          (Altitude alert C cord) in the cockpit sounds warning the pilots that
-          the aircraft has left its recommended altitude and has begun climbing
-          because of Bonin’s nose up input. The airplane then sounded the stall
-          warning twice in a row. Now remember, the plane’s computers are in
-          alternate law so it is not going to correct Bonin’s mistake. Neither
-          pilot acknowledged the altitude or stall warning.
-        </div>
-        <div class="text-scroll step" data-step="16">
-          2:10:16 - The airplane is now climbing at a blistering rate, almost
-          7000ft/minute. Both pilots acknowledge that they have lost their
-          airspeed indications. But as the aircraft continues to climb it’s also
-          losing a tremendous amount of speed. During the next ten seconds Bonin
-          brings the pitch of the aircraft from 2.5 degrees to 11 degrees.
-          During these next ten seconds, Rober starts to read out the warning
-          messages in a disorganized manner. He verbally says “Alternate Law
-          Protections”, which means that the airplane has moved from normal to
-          alternate law and that stalls can occur. But each time the stall
-          warning sounds, both pilots seem to not acknowledge it at all. It’s
-          not clear that Robert processed what he was reading from the screen or
-          if Bonin ever heard anything that Robert was saying at this time.
-          Because if they did, they would have acknowledged the stall warnings
-          and instead of pulling up, Bonin could have pushed the nose of the
-          plane down, to recover from the stall.
-        </div>
-        <div class="text-scroll step" data-step="17">
-          2:10:27 - Robert tells Bonin, “Pay attention to your speed. Pay
-          attention to your speed.” By this Robert probably means the vertical
-          speed because their air speed is still currently invalid.
-        </div>
-        <div class="text-scroll step" data-step="18">
-          2:10:28 - Bonin responds, “Ok, ok, I am descending...”
-        </div>
-        <div class="text-scroll step" data-step="19">
-          2:10:31- Robert tells Bonin, “Decend… It says we are going up… It says
-          we are going up.... Descend.”
-        </div>
-        <div class="text-scroll step" data-step="20">
-          2:10:36 - The pitot tube on the left side of the aircraft finally
-          becomes unclogged and begins working again. This means that Robert,
-          the pilot sitting in the left seat has accurate air speed indications
-          on his display. Now during this whole time, Robert has actually no
-          idea whether or not Bonin is making the necessary side stick inputs.
-          That is because Robert’s side stick and Bonin’s stick are not linked.
-          This is how most Airbus aircraft are designed. If Bonin moves side
-          stick, Robert’s side stick stays stationary. If both pilots move their
-          side stick at the same time, then a warning sounds off saying “Dual
-          Input”, and flight computers split the difference. If Bonin and Rober
-          were flying a Boeing aircraft, they would both have what is called
-          yolk. Its a long column that sits in front of the pilots seat. Now if
-          one pilot moves his yolk or control column in a boeing, the other
-          pilot’s yolk/control column would move as well because both are
-          linked. Robert would be able to identify exactly what Bonin was doing.
-          In this A330 that was unfortunately not the case.
-        </div>
-        <div class="text-scroll step" data-step="21">
-          2:10:38- Bonin eases back on the stick and for slight moment the
-          aircraft begins to pick up some speed as the nose is lowered. A few
-          degrees lower and Bonin can reduce the climb and get the aircraft back
-          on track, but for some reason Bonin does not do this. He push back on
-          the stick again.
-        </div>
-        <div class="text-scroll step" data-step="22">
-          2:10:41 - not knowing what is happening, Robert makes a call to
-          Captain Dubois asking him to come to cockpit immediately.
-        </div>
-        <div class="text-scroll step" data-step="23">
-          2:10:51 - Bonin continues to make nose up inputs, raising the pitch of
-          the aircraft to 13 degrees above the horizon. Again the stall warning
-          sounds. The aircraft begins to shake violently.
-        </div>
-        <div class="text-scroll step" data-step="24">
-          2:10:55 - The stall warning continues sound. The thrust levers are
-          positioned in the TO/GA detent. TO/GA stands for take off/go around.
-          Now the reason the thrust is at this position is because this is the
-          setting used by pilots during take offs and go arounds (when they need
-          to abort a landing), when they need to increase altitude and speed
-          efficiently. Only issues is that this only works at low altitudes near
-          sea level, NOT AT CRUISING altitude. At this altitude where the air is
-          much thinner, engines generate less thrust and the wings produce much
-          less left. About a few seconds later the air speed indication on
-          Bonin’s display became valid again. After this point, it was all pilot
-          error.
-        </div>
-        <div class="text-scroll step" data-step="25">
-          2:11:06 - The aircraft reaches its maximum altitude of about 38,000
-          feet. With the engine at full power and an angle of attack of 16
-          degrees, the plane begins to decend and fall out of the sky. If Bonin
-          just let go of the side stick, the plane’s pitch would decrease,
-          increase the flow of air over the top of the wings, and pulling the
-          plane out of the stall. But Bonin, doesnt let go and pulls and holds
-          the side stick all the way back. At this time, the plane is shaking so
-          much that it’s extremely difficult to keep the plane's wings level.
-        </div>
-        <div class="text-scroll step" data-step="26">
-          2:11:37 - Robert takes control of the plane for a few seconds, without
-          letting Bonin know that he was taking control. Almost immediately
-          after Robert takes control of the plane, Bonin takes control back.
-        </div>
-        <div class="text-scroll step" data-step="27">
-          2:11:42 - Captain Dubois finally comes in the cockpit to see what is
-          happening. Captain Dubois asks, “What the hell are you doing?”. And
-          Bonin responds that they have lost control of the airplane.
-        </div>
-        <div class="text-scroll step" data-step="28">
-          2:11:47 - The aircraft falls back down to it’s original altitude of
-          35,000 feet but continues to descend at a rate of almost 10,000ft/min.
-          At this moment the stall warning stopped sounding because the angle of
-          attack was so high that the flight computers rejected the data as
-          invalid. The recorded angle of attack was an incredible 41 degrees.
-          The right wing was down by about 30 degrees causing the plane to arc
-          way off its set flight path. The aircraft would maintain these
-          characteristics all the way till it hit the Atlantic ocean.
-        </div>
-        <div class="text-scroll step" data-step="29">
-          2:12:02 - Now because the stall warning had stopped sounding, the
-          pilots may have assumed that all was ok again (when in reality things
-          were not ok). Each time bonin actually did lower the nose of the
-          plane, the computer began to receive accurate data again and the stall
-          warning began to sound. Thinking that he was in stall again Bonin then
-          pulled back on his side stick, increasing the pitch of the plane, and
-          increasing the angle of attack, such that the computer rejected the
-          data being provided, and the stall warning stopped. This was a
-          nightmarish negative feedback loop. The plane was now loosing altitude
-          at a rate of 15,000ft/min/
-        </div>
-        <div class="text-scroll step" data-step="30">
-          2:12:14 - Robert asks Captain Dubois, “What do you think? What do you
-          think? What should we do?”
-        </div>
-        <div class="text-scroll step" data-step="31">
-          2:12:15- Captain Dubois says, “I don’t know.” Captain Dubois urges
-          Bonin to level the wings but that does extremely little to solve their
-          actual problem.
-        </div>
+        <section class="step"data-step="28">
+            <div class="text-scroll">
+                <h5 class="ls-text-titles">LoAS</h5>
+                This also switched the mode on the flight computers from the existing “Normal Law” to
+                “Alternate Law”. In alternate law, the pilot’s inputs are not as
+                scrutinized by the flight computer as under “normal law”, which means
+                that the flight computers can’t prevent any errors or prevent stalls
+                from happening. 
+              </div>
+              <div class="text-scroll">
+                <h5 class="ls-text-titles">LoAS</h5>
+                Everything that just occurred was a normal and logical
+                response by the airplane and was designed this way by the airplane
+                engineers. At this moment, Bonin verbally says “I have the controls.”
+              </div>
+        </section>
+        <section id="ap-loss" class="step" data-step="26">
+            <div class="text-scroll">
+                <h5 class="ls-text-titles">LoAS</h5>
+                Now remember, the airplane is currently flying level (both
+                wings and nose level to the horizon) and the engine thrust set to
+                consistently deliver a nominal .8 mach. The only significant error was
+                the loss of the indication of airspeed, not the actual airspeed
+                itself. All Bonin needs to do is keep the aircraft straight and level
+                and maintain these current conditions. 
+              </div>
+              <div class="text-scroll">
+                <h5 class="ls-text-titles">LoAS</h5>
+                As a result of the loss the auto pilot, the plane begins to roll slightly to the right. 
+                To correct this all Bonin needs to do is move his side stick a little bit to the
+                left to counteract the roll right. But for some unknown reason, Bonin
+                makes a nose up and left input. 
+              </div>
+              <div class="text-scroll">
+                <h5 class="ls-text-titles">LoAS</h5>
+                Now its not a slight pulling back of the side stick. 
+                Bonin jerks the side stick back considerably and to
+                the left. Because Bonin makes this nose up and left input, an alarm
+                (Altitude alert C cord) in the cockpit sounds warning the pilots that
+                the aircraft has left its recommended altitude and has begun climbing
+                because of Bonin’s nose up input. The airplane then sounds the stall
+                warning twice in a row. Now remember, the plane’s computers are in
+                alternate law so it is not going to correct Bonin’s mistake. Neither
+                pilot acknowledges the altitude or stall warning.
+              </div>
+              <div class="text-scroll">
+                <h5 class="ls-text-titles">LoAS</h5>
+                The airplane is now climbing at a blistering rate, almost
+                7000ft/minute. Both pilots acknowledge that they have lost their
+                airspeed indications. But as the aircraft continues to climb it’s also
+                losing a tremendous amount of speed. During the next ten seconds Bonin
+                brings the pitch of the aircraft from 2.5 degrees to 11 degrees.
+              </div>
+              <div class="text-scroll">
+                <h5 class="ls-text-titles">LoAS</h5>
+                During these next ten seconds, Rober starts to read out the warning
+                messages in a disorganized manner. He verbally says “Alternate Law
+                Protections”, which means that the airplane has moved from normal to
+                alternate law and that stalls can occur. But each time the stall
+                warning sounds, both pilots seem to not acknowledge it at all. It’s
+                not clear that Robert processed what he was reading from the screen or
+                if Bonin ever heard anything that Robert was saying at this time.
+                Because if they did, they would have acknowledged the stall warnings
+                and instead of pulling up, Bonin could have pushed the nose of the
+                plane down, to recover from the stall.
+              </div>
+        </section>
+        <section id="almost-saved" class="step" data-step="27">
+            <div class="text-scroll">
+                <h3 class="al-text-titles">Almost Saved - ALSAV</h3>
+                Robert tells Bonin, “Pay attention to your speed. Pay
+                attention to your speed.” By this Robert probably means the vertical
+                speed because their air speed is still currently invalid.
+              </div>
+              <div class="text-scroll">
+                <h5 class="al-text-titles">ALSAV</h5>
+                Bonin responds, “Ok, ok, I am descending...”
+              </div>
+              <div class="text-scroll">
+                <h5 class="al-text-titles">ALSAV</h5>
+                Robert tells Bonin, “Decend… It says we are going up… It says
+                we are going up.... Descend.”
+              </div>
+              <div class="text-scroll">
+                <h5 class="al-text-titles">ALSAV</h5>
+                Now during this whole time, Robert has actually no
+                idea whether or not Bonin is making the necessary side stick inputs.
+                That is because Robert’s side stick and Bonin’s stick are not linked.
+                This is how most Airbus aircraft are designed. If Bonin moves side
+                stick, Robert’s side stick stays stationary. If both pilots move their
+                side stick at the same time, then a warning sounds off saying “Dual
+                Input”, and flight computers split the difference. 
+              </div>
+              <div class="text-scroll">
+                <h5 class="al-text-titles">ALSAV</h5>
+                If Bonin and Rober were flying a Boeing aircraft, they would both have what is called
+                yolk. Its a long column that sits in front of the pilots seat. Now if
+                one pilot moves his yolk or control column in a boeing, the other
+                pilot’s yolk/control column would move as well because both are
+                linked. Robert would be able to identify exactly what Bonin was doing.
+                In this A330 that was unfortunately not the case.
+              </div>
+              <div class="text-scroll">
+                <h5 class="al-text-titles">ALSAV</h5>
+                Bonin eases back on the stick and for slight moment the
+                aircraft begins to pick up some speed as the nose is lowered. A few
+                degrees lower and Bonin can reduce the climb and get the aircraft back
+                on track, but for some reason Bonin does not do this. He push back on
+                the stick again.
+              </div>
+        </section>
+        <section id='nose-up' class="step" data-step="28">
+            <div class="text-scroll">
+                <h3 class="dp-text-titles">Deep Stall - DPSL</h3>
+                Even though the plane is actually beginning to level Bonin continues to make nose up inputs, 
+                raising the pitch of the aircraft back up to 13 degrees above the horizon. 
+                Again the stall warning sounds. The aircraft begins to shake violently.
+            </div>
+            <div class="text-scroll">
+                <h5 class="dp-text-titles">DPSL</h5>
+                Not knowing what is happening, Robert makes a call to
+                Captain Dubois asking him to come to cockpit immediately.
+              </div>
+              <div class="text-scroll">
+                <h5 class="dp-text-titles">DPSL</h5>
+                Bonin continues to make nose up inputs, raising the pitch of
+                the aircraft to 13 degrees above the horizon. Again the stall warning
+                sounds. The aircraft begins to shake violently.
+              </div>
+              <div class="text-scroll">
+                <h5 class="dp-text-titles">DPSL</h5>
+                The aircraft reaches its maximum altitude of about 38,000
+                feet. With the engine at full power and an angle of attack of 16
+                degrees, the plane begins to decend and fall out of the sky. If Bonin
+                just let go of the side stick, the plane’s pitch would decrease,
+                increase the flow of air over the top of the wings, and pulling the
+                plane out of the stall. But Bonin, doesnt let go and pulls and holds
+                the side stick all the way back. At this time, the plane is shaking so
+                much that it’s extremely difficult to keep the plane's wings level.
+              </div>
+        </section>
+        <section id='reasons-for-nose-up' class="step" data-step="29">
+            <div class="text-scroll">
+                <h5 class="dp-text-titles">DPSL</h5>
+                We can never really know the true reason 
+                Bonin kept pulling his side stick back, 
+                but there are some possible explanations.
+            </div>
+            <div class="text-scroll">
+                <h5 class="dp-text-titles">DPSL</h5>
+                One possible reason was that both pilot’s were more focused on leveling the plane, 
+                trying to understand why the auto pilot was turned off and why they lost their airspeeds
+            </div>
+            <div class="text-scroll">
+                <h5 class="dp-text-titles">DPSL</h5>
+                Another reason may be that Bonin was trying to reach clear skys, by flying higher, 
+                because they were at the edge of the cloud layer. 
+            </div>
+            <div class="text-scroll">
+                <h5 class="dp-text-titles">DPSL</h5>
+                And the last reason may include that the presence of turbulence prior to loss 
+                of autopilot may have changed their perception of the planes movements.
+            </div>
+        </section>
+        <section id="dubois-returns" class="step" data-step="30">
+            <div class="text-scroll">
+                <h3 class="cf-text-titles">Confusion - CFUS</h3>
+                Robert takes control of the plane for a few seconds, without
+                letting Bonin know that he was taking control. Almost immediately
+                after Robert takes control of the plane, Bonin takes control back.
+              </div>
+              <div class="text-scroll">
+                <h5 class="cf-text-titles">CFUS</h5>
+                Captain Dubois finally comes in the cockpit to see what is
+                happening. Captain Dubois asks, “What the hell are you doing?”. And
+                Bonin responds that they have lost control of the airplane.
+              </div>
+              <div class="text-scroll">
+                <h5 class="cf-text-titles">CFUS</h5>
+                The aircraft falls back down to it’s original altitude of
+                35,000 feet but continues to descend at a rate of almost 10,000ft/min.
+                At this moment the stall warning stopped sounding because the angle of
+                attack was so high that the flight computers rejected the data as
+                invalid. The recorded angle of attack was an incredible 41 degrees.
+              </div> 
+              <div class="text-scroll">
+                <h5 class="cf-text-titles">CFUS</h5>
+                The right wing was down by about 30 degrees causing the plane to arc
+                way off its set flight path. The aircraft would maintain these
+                characteristics all the way till it hit the Atlantic ocean.
+             </div>
+             <div class="text-scroll">
+                <h5 class="cf-text-titles">CFUS</h5>
+                Now because the stall warning had stopped sounding, the
+                pilots may have assumed that all was ok again (when in reality things
+                were not ok). Each time bonin actually did lower the nose of the
+                plane, the computer began to receive accurate data again and the stall
+                warning began to sound. Thinking that he was in stall again Bonin then
+                pulled back on his side stick, increasing the pitch of the plane, and
+                increasing the angle of attack, such that the computer rejected the
+                data being provided, and the stall warning stopped. This was a
+                nightmarish negative feedback loop. The plane was now loosing altitude
+                at a rate of 15,000ft/min/
+              </div>
+        </section>
+        <section id="falling-out-of-sky" class="step" data-step="31">
+            <div class="text-scroll">
+                <h3 class="fn-text-titles">Final Moments - FNMT</h3>
+                Robert asks Captain Dubois, “What do you think? What do you
+                think? What should we do?”
+              </div>
+              <div class="text-scroll">
+                <h5 class="fn-text-titles">FNMT</h5>
+                Captain Dubois says, “I don’t know.” Captain Dubois urges
+                Bonin to level the wings but that does extremely little to solve their
+                actual problem.
+              </div>
+        </section>
         <div class="text-scroll step" data-step="32">
-          2:13:32 - Robert quickly takes back control, pitches the nose of the
+            <h5 class="fn-text-titles">FNMT</h5>
+          Robert quickly takes back control, pitches the nose of the
           airplane down, but as he does that Bonin pushes the nose of the plane
           up. The Dual Input warning sounds again and the plane maintains a
           upward pitch. Bonin says, “We are reaching flight level 100.” , which
@@ -355,31 +521,29 @@
           pilots who would have been able to execute the maneuver necessary to
           save this plane.
         </div>
-        <div class="text-scroll step" data-step="33">
-          2:13:40 - Robert tells Bonin, “Climb, Climb, Climb…”. Bonin responds,
-          “But I have had my stick back this whole time!”. To this Captain
-          Dubois says, “No, do not climb!”. What Captain Dubois meant to say was
-          “Do not pitch up!” because it was because their high pitch that they
-          were falling out of the sky. They actually needed to “climb”.
-        </div>
-        <div class="text-scroll step" data-step="34">
-          2:14:17 - The ground proximity warning system began to sound because
-          it detected the ocean was fast approaching. Warning of “Sink Rate” and
-          “Pull Up” began to sound.
-        </div>
-        <div class="text-scroll step" data-step="35">
-          2:14:28 - The recording stops.
-        </div>
-        <div class="text-scroll step" data-step="36"></div>
-        <div class="text-scroll step" data-step="37"></div>
+        <section id="final-seconds" class="step" data-step="33">
+            <div class="text-scroll step">
+                <h5 class="fn-text-titles">FNMT</h5>
+                Robert tells Bonin, “Climb, Climb, Climb…”. Bonin responds,
+                “But I have had my stick back this whole time!”. To this Captain
+                Dubois says, “No, do not climb!”. What Captain Dubois meant to say was
+                “Do not pitch up!” because it was because their high pitch that they
+                were falling out of the sky. They actually needed to “climb”.
+              </div>
+              <div class="text-scroll step">
+                <h5 class="fn-text-titles">FNMT</h5>
+                The ground proximity warning system began to sound because
+                it detected the ocean was fast approaching. Warning of “Sink Rate” and
+                “Pull Up” began to sound.
+              </div>
+              <div class="text-scroll step">
+                <h5 class="fn-text-titles">FNMT</h5>
+                The recording stops.
+             </div>
+        </section>
       </section>
 
       <section id="graphic">
-        <img
-          id="intro-image"
-          src="../assets/af447.jpg"
-          alt="Picture of Air France 447 before takeoff"
-        />
         <section id="media">
           <div id="waypoints"></div>
           <div id="nav-displays">
@@ -390,7 +554,19 @@
               <div id="altimeter"></div>
               <div id="horizontal-heading"></div>
             </div>
-            <div id="animation"></div>
+            <div id="animation">
+                <div id="media-player">
+                    <img id="plane-image">
+                </div>
+                <div id="media-controls">
+                    <div id="play-button">
+                        <button>Start Animation</button>
+                    </div>
+                    <div id="restart-button">
+                        <button>Replay</button>
+                    </div>
+                </div>
+            </div>
             <div id="ECAM"></div>
             <div id="side-stick-left"></div>
             <div id="side-stick-right"></div>
@@ -403,6 +579,7 @@
     <script src="https://unpkg.com/scrollama"></script>
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script type="module" src="../javascript/main.js"></script>
   </body>
 </html>

@@ -6,6 +6,7 @@ class wayPoint{
     this.wayPointWidth = d3.select('#waypoints')._groups[0][0].clientWidth
     this.wayPointHeight = d3.select('#waypoints')._groups[0][0].clientHeight
     
+    console.log(this.wayPointHeight)
     
     this.container = d3.select('#waypoints')
                  .append('svg')
