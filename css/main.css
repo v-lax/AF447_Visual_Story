@@ -282,3 +282,21 @@ div.inline {
     display: inline-block;
     vertical-align: bottom;
 }
+
+div.tooltip {	
+    position: absolute;			
+    text-align: left;
+    display: flex;			
+    width: 350px;					
+    height: 200px;					
+    padding: 2px;				
+    font: 12px;
+    font-family: 'Roboto', sans-serif;		
+    background: rgb(27, 24, 24);	
+    border: 1px;		
+    border-radius: 1px;
+    border-color: yellow;
+    border-style: solid;			
+    pointer-events: none;	
+    color: white;		
+}

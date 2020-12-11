@@ -21,7 +21,7 @@ var content = d3.select('#content')
 var step = d3.select('.step')
 
 var wayPointChart, ecam, sideStickDiagram, altimeterDiagram, attitudeDiagram, speedDiagram,
-    planes, messageAlert
+    planes, messageAlert, div
 
 let activationFunctions = [draw0, draw1, draw2, draw3, draw4,
     draw5, draw6, draw7, draw8, draw9, draw10, draw11, draw12, draw13, draw14, draw15,
@@ -87,6 +87,11 @@ function createViz() {
     attitudeDiagram = new attitude()
     speedDiagram = new speed()
     messageAlert = new flightMode()
+
+    div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .attr('id', 'tool-tip')
+        .style("opacity", 0);
 }
 
 function clean(charType) {
@@ -425,8 +430,8 @@ function draw20() {
     // d3.select('#restart-button').style('opacity', '1')
 
     let tl2 = gsap.timeline()
-    tl2.to('#attitude-circle', { duration: 5, rotation: 20, transformOrigin: "50%,50%",repeat: 1, yoyo: true }, 0)
-    tl2.to('.pitch-angles', { duration: 5, rotation: 20, transformOrigin: "50%,50%",repeat: 1, yoyo: true }, 0)
+    tl2.to('#attitude-circle', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
+    tl2.to('.pitch-angles', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
 
     console.log(planes.scene.children[0])
 }
@@ -440,6 +445,114 @@ function borderColorWhite(input) {
 }
 
 init();
+
+d3.select("#flight-display")
+    .on("mouseover", function (d) {
+        div.transition()
+            .duration(200)
+            .style("opacity", 1);
+        div.html('This is the Pilot Flight Display (or PFD for short). It is what a pilot uses to navigate in low visibility.')
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+        div.append('img')
+            .style('max-width', '100%')
+            .style('max-height', '100%')
+            .style('text-align', 'center')
+            .attr('src', '../assets/pfd.png')
+    })
+    .on("mouseout", function (d) {
+        div.transition()
+            .duration(500)
+            .style("opacity", 0);
+    });
+
+d3.select("#waypoints")
+    .on("mouseover", function (d) {
+        div.transition()
+            .duration(200)
+            .style("opacity", 1);
+        div.html(`These are called waypoints. A pilot uses 
+        these as checkpoints to communicate their progress with 
+        air traffice control. We will use it to visualize your
+        progress through out the story`)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+        div.append('img')
+            .style('max-width', '100%')
+            .style('max-height', '100%')
+            .style('text-align', 'center')
+            .attr('src', '../assets/waypoints.png')
+    })
+    .on("mouseout", function (d) {
+        div.transition()
+            .duration(500)
+            .style("opacity", 0);
+    });
+
+d3.select("#side-stick-left")
+    .on("mouseover", function (d) {
+        div.transition()
+            .duration(200)
+            .style("opacity", 1);
+        div.html(`This visualizes the movement of the pilot's
+        side stick that is sitting on the left side of the cockpit. 
+        In this case, this side stick belongs to David Robert, the pilot 
+        monitoring all of the displays`)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+        div.append('img')
+            .style('max-width', '100%')
+            .style('max-height', '100%')
+            .style('text-align', 'center')
+            .attr('src', '../assets/db.JPG')
+    })
+    .on("mouseout", function (d) {
+        div.transition()
+            .duration(500)
+            .style("opacity", 0);
+    });
+
+d3.select("#side-stick-right")
+    .on("mouseover", function (d) {
+        div.transition()
+            .duration(200)
+            .style("opacity", 1);
+        div.html(`This visualizes the movement of the pilot's
+        side stick that is sitting on the right side of the cockpit. 
+        In this case, this side stick belongs to Cedric Bonin, the main pilot
+        flying.`)
+            .style("left", (d3.event.pageX - 200) + "px")
+            .style("top", (d3.event.pageY - 200) + "px");
+        div.append('img')
+            .style('max-width', '100%')
+            .style('max-height', '100%')
+            .style('text-align', 'center')
+            .attr('src', '../assets/cb.jpg')
+    })
+    .on("mouseout", function (d) {
+        div.transition()
+            .duration(500)
+            .style("opacity", 0);
+    });
+
+d3.select("#ECAM")
+    .on("mouseover", function (d) {
+        div.transition()
+            .duration(200)
+            .style("opacity", 1);
+        div.html(`This is the ECAM message Alert also know as the 
+        Electronic Centralized Aircraft Monitor. It 
+        will simply display any important message for the pilot.
+        We'll use it for the same purposes.`)
+            .style("left", (d3.event.pageX - 200) + "px")
+            .style("top", (d3.event.pageY - 200) + "px");
+    })
+    .on("mouseout", function (d) {
+        div.transition()
+            .duration(500)
+            .style("opacity", 0);
+    });
+
 
 // d3.select('#play-button').style('opacity','1')
 // d3.select('#restart-button').style('opacity','1')
