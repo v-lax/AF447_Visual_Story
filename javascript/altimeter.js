@@ -31,6 +31,7 @@ class altimeter {
         this.altSvg.append('rect')
                    .attr('width',this.altWidth)
                    .attr('height','25px')
+                   .attr('id','altitude-rect')
                    .attr('x',0)
                    .attr('y',this.altHeight/2)
                    .attr('fill','black')

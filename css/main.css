@@ -25,9 +25,9 @@ main{
 #media{
     display: grid;
     grid-template-columns: .75fr 6fr;
-    height: 100%;
+    height:100%;
     top: 0;
-    max-height: 90vh;
+    max-height: 88vh;
     opacity: 0;
     position: sticky;
 }
@@ -240,17 +240,7 @@ main{
     background-color:  rgb(39, 34, 34);
 }
 
-#horizontal-heading{
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    margin: 10px;
-    background-color:  rgb(39, 34, 34);
-}
+
 
  .displays {
     margin-top:15%;

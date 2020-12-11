@@ -1,12 +1,11 @@
 class wayPoint{
     constructor(){
     
-    this.data = ['INTRO','FSCHL','INTOL','SALPU','ORARO','TASIL']
+    this.data = ['INTRO','FSCHL','ARAR0','LoAS','ALSAV','DPSL','CFUS','FNMT']
     
     this.wayPointWidth = d3.select('#waypoints')._groups[0][0].clientWidth
     this.wayPointHeight = d3.select('#waypoints')._groups[0][0].clientHeight
     
-    console.log(this.wayPointHeight)
     
     this.container = d3.select('#waypoints')
                  .append('svg')
@@ -18,39 +17,53 @@ class wayPoint{
                  .style("stroke", "white")
                  .style("stroke-width", '2px')
                  .attr("x1", (this.wayPointWidth/2))
-                 .attr("y1", 80)
+                 .attr("y1", 70)
                  .attr("x2", this.wayPointWidth/2)
-                 .attr("y2", 120);
+                 .attr("y2", 90);
     this.container.append('line')
                  .style("stroke", "white")
                  .style("stroke-width", '2px')
                  .attr("x1", (this.wayPointWidth/2))
-                 .attr("y1", 180)
+                 .attr("y1", 145)
                  .attr("x2", this.wayPointWidth/2)
-                 .attr("y2", 220);
+                 .attr("y2", 165);
     
     this.container.append('line')
                  .style("stroke", "white")
                  .style("stroke-width", '2px')
                  .attr("x1", (this.wayPointWidth/2))
-                 .attr("y1", 280)
+                 .attr("y1", 225)
+                 .attr("x2", this.wayPointWidth/2)
+                 .attr("y2", 240);
+    this.container.append('line')
+                 .style("stroke", "white")
+                 .style("stroke-width", '2px')
+                 .attr("x1", (this.wayPointWidth/2))
+                 .attr("y1", 300)
                  .attr("x2", this.wayPointWidth/2)
                  .attr("y2", 320);
+    
     this.container.append('line')
                  .style("stroke", "white")
                  .style("stroke-width", '2px')
                  .attr("x1", (this.wayPointWidth/2))
                  .attr("y1", 380)
                  .attr("x2", this.wayPointWidth/2)
-                 .attr("y2", 420);
-    
+                 .attr("y2", 395);
     this.container.append('line')
                  .style("stroke", "white")
                  .style("stroke-width", '2px')
                  .attr("x1", (this.wayPointWidth/2))
-                 .attr("y1", 480)
+                 .attr("y1", 455)
                  .attr("x2", this.wayPointWidth/2)
-                 .attr("y2", 520);    
+                 .attr("y2", 470);  
+    this.container.append('line')
+                 .style("stroke", "white")
+                 .style("stroke-width", '2px')
+                 .attr("x1", (this.wayPointWidth/2))
+                 .attr("y1", 532)
+                 .attr("x2", this.wayPointWidth/2)
+                 .attr("y2", 550);   
 
     this.circles = this.container.selectAll('.waypoint-circles')
                   .data(this.data)
@@ -64,7 +77,7 @@ class wayPoint{
                   .attr('r','30px')
                   .attr('cx',this.wayPointWidth/2)
                   .attr('cy',function(d,i){
-                      return (i * 100 + 50)
+                      return (i * 77 + 40)
                   })
      
     this.container.selectAll('text')
@@ -72,7 +85,7 @@ class wayPoint{
     .join('text')
     .attr('x',(this.wayPointWidth/2)-20)
     .attr('y',function(d,i){
-        return (i * 100 + 55)
+        return (i * 77 + 45)
     })
     .attr('id',function(d,i){return `text${i}`})
     .attr('fill','white')
