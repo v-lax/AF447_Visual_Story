@@ -426,14 +426,52 @@ function draw19() {
 
 
 function draw20() {
-    // d3.select('#play-button').style('opacity', '1')
-    // d3.select('#restart-button').style('opacity', '1')
+     d3.select('#play-button').style('opacity', '1')
+     d3.select('#restart-button').style('opacity', '1')
 
-    let tl2 = gsap.timeline()
-    tl2.to('#attitude-circle', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
-    tl2.to('.pitch-angles', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
+    document.getElementById("webGlCanvas").remove();
+    
+    d3.select('#media-player')
+        .append('video')
+        .attr('id','my-video')
+        .style('max-height','100%')
+        .style('max-width','100%')
+        .append('source')
+        .attr('id', 'plane-image')
+    d3.select('#plane-image')
+        .attr('src', '../assets/first_test.mp4')
+        
 
-    console.log(planes.scene.children[0])
+     d3.select('#play-button')
+       .on('click',function(){
+        let tl2 = gsap.timeline()
+        tl2.to('#attitude-circle', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
+        tl2.to('.pitch-angles', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
+    
+        d3.select('#svgRight')
+        .append('path')
+        .attr('id','path-right')
+        .attr('d','M 129 97.5 L 50 100 L 129 100')
+        .style('fill','none')
+        .style('stroke','none')
+        
+        d3.select('#circle-right')
+        .append('animateMotion')
+        .attr('id','animate-right-circle')
+        .attr('path','M 129 97.5 L 50 100 L 129 100')
+        .attr('dur','10s')
+        .attr('begin','click')
+        .attr("repeatCount","1")
+
+        //document.getElementById("path-right").remove();
+        //document.getElementById("animate-right-circle").remove();
+
+        var vid = document.getElementById("my-video");
+        vid.play()
+
+    })
+
+
 }
 
 function borderColorRed(input) {

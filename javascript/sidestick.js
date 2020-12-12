@@ -8,12 +8,14 @@ class sideStick{
         
         this.svgLeft = d3.select('#side-stick-left')
                           .append('svg')
+                          .attr('id','svgLeft')
                           .attr('width',this.sslWidth)
                           .attr('height',this.sslHeight)
                           
 
         this.svgRight = d3.select('#side-stick-right')
         .append('svg')
+        .attr('id','svgRight')
         .attr('width',this.ssrWidth)
         .attr('height',this.ssrHeight)
 
@@ -93,6 +95,7 @@ class sideStick{
                     .text("25%")
                     
         this.svgLeft.append('circle')
+                    .attr('id','left-circle')
                     .attr('cx',this.sslWidth/2)
                     .attr('cy',this.sslHeight/2)
                     .attr('r','10px')
@@ -172,6 +175,7 @@ class sideStick{
                     .attr('cy',this.ssrHeight/2)
                     .attr('r','10px')
                     .attr('fill','#383838')
+                    .attr('id','circle-right')
         
         this.svgRight.append('line')
                     .style("stroke", "black")
