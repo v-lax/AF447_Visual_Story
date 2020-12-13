@@ -24,7 +24,7 @@ class Ecam{
         .attr('id','ecam-message')
         .style('color','green')
         .style('font-family','B612')
-        .text('Welcom Aboard AF447')
+        .text('Welcome Aboard AF447')
         .style('border','1px solid white')
         .style('background-color','black')
         .style('text-align','center')

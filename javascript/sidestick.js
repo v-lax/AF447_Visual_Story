@@ -171,11 +171,12 @@ class sideStick{
                     .text("25%")
                     
         this.svgRight.append('circle')
-                    .attr('cx',this.ssrWidth/2)
-                    .attr('cy',this.ssrHeight/2)
+                    .attr('cx',0)
+                    .attr('cy',0)
                     .attr('r','10px')
                     .attr('fill','#383838')
                     .attr('id','circle-right')
+        
         
         this.svgRight.append('line')
                     .style("stroke", "black")

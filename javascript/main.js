@@ -125,7 +125,7 @@ function handleStepEnter(response) {
         wayPointChart.unhighlight(5)
         wayPointChart.unhighlight(6)
         wayPointChart.unhighlight(7)
-    } else if ((response.index >= 13) && (response.index <= 16)) {
+    } else if ((response.index >= 13) && (response.index <= 19)) {
         wayPointChart.highlight(2)
         wayPointChart.unhighlight(0)
         wayPointChart.unhighlight(1)
@@ -134,7 +134,7 @@ function handleStepEnter(response) {
         wayPointChart.unhighlight(5)
         wayPointChart.unhighlight(6)
         wayPointChart.unhighlight(7)
-    } else if ((response.index >= 17) && (response.index <= 20)) {
+    } else if ((response.index >= 20) && (response.index <= 23)) {
         wayPointChart.highlight(3)
         wayPointChart.unhighlight(0)
         wayPointChart.unhighlight(1)
@@ -143,7 +143,7 @@ function handleStepEnter(response) {
         wayPointChart.unhighlight(5)
         wayPointChart.unhighlight(6)
         wayPointChart.unhighlight(7)
-    } else if ((response.index === 21)) {
+    } else if ((response.index === 24)) {
         wayPointChart.highlight(4)
         wayPointChart.unhighlight(0)
         wayPointChart.unhighlight(1)
@@ -153,7 +153,7 @@ function handleStepEnter(response) {
         wayPointChart.unhighlight(6)
         wayPointChart.unhighlight(7)
 
-    } else if ((response.index >= 22) && (response.index <= 23)) {
+    } else if ((response.index >= 25) && (response.index <= 26)) {
         wayPointChart.highlight(5)
         wayPointChart.unhighlight(0)
         wayPointChart.unhighlight(1)
@@ -163,7 +163,7 @@ function handleStepEnter(response) {
         wayPointChart.unhighlight(6)
         wayPointChart.unhighlight(7)
 
-    } else if ((response.index === 24)) {
+    } else if ((response.index === 27)) {
         wayPointChart.highlight(6)
         wayPointChart.unhighlight(0)
         wayPointChart.unhighlight(1)
@@ -172,7 +172,7 @@ function handleStepEnter(response) {
         wayPointChart.unhighlight(4)
         wayPointChart.unhighlight(5)
         wayPointChart.unhighlight(7)
-    } else if ((response.index >= 25)) {
+    } else if ((response.index >= 28)) {
         wayPointChart.highlight(7)
         wayPointChart.unhighlight(0)
         wayPointChart.unhighlight(1)
@@ -276,6 +276,12 @@ function draw8() {
         .style('stroke', 'red')
     d3.select('#plane-nose').style('stroke', 'yellow')
 
+    d3.select('#plane-image')
+          .attr('src','../assets/airplane-pitch.gif')
+          .style('max-width','100%')
+          .style('max-height','100%')
+          .attr('transfor','translate(50,50)')
+
     noseUpDemo({ paused: false })
     noseDownDemo({ paused: true })
     rotateLeft({ paused: true })
@@ -305,6 +311,11 @@ function draw10() {
     rotateLeft({ paused: false })
     rotateRight({ paused: true })
 
+     d3.select('#plane-image')
+           .attr('src','../assets/airplane-role.gif')
+           .style('max-width','100%')
+           .style('max-height','100%')
+
 }
 function draw11() {
     clean('Media')
@@ -329,6 +340,11 @@ function draw12() {
     d3.select('.pitch-angles').selectAll('line').style('stroke-width', '3px')
         .style('stroke', 'red')
     borderColorWhite(d3.select('#animation'))
+
+    d3.select('#plane-image')
+           .attr('src','../assets/af447.jpg')
+           .style('max-width','100%')
+           .style('max-height','100%')
 }
 
 function draw13() {
@@ -413,21 +429,34 @@ function draw18(response) {
 
     if (response.direction === 'up') {
         d3.select('#ecam-message')
-            .text('Flight Mode: Normal Law')
+            .text('Nominal')
+            .style('border-color','white')
+            .style('border-width','initial')
     }
 }
-function draw19() {
+function draw19(response) {
+    if (response.direction === 'up') {
+        document.getElementById("my-video").remove();
+        planes = new plane()
+    }
     document.getElementById("plane-image").remove();
     planes = new plane()
 
     d3.select('#ecam-message')
         .text('Flight Mode: Normal Law')
+        .style('border-color','red')
+        .style('border-width','medium')
 }
 
 
 function draw20() {
      d3.select('#play-button').style('opacity', '1')
      d3.select('#restart-button').style('opacity', '1')
+
+     d3.select('#ecam-message')
+     .text('Flight Mode: Normal Law')
+     .style('border-color','white')
+     .style('border-width','initial')
 
     document.getElementById("webGlCanvas").remove();
     
@@ -439,32 +468,23 @@ function draw20() {
         .append('source')
         .attr('id', 'plane-image')
     d3.select('#plane-image')
-        .attr('src', '../assets/first_test.mp4')
-        
+        .attr('src', '../assets/animation_clips/rotate_20.mp4')
+
 
      d3.select('#play-button')
        .on('click',function(){
         let tl2 = gsap.timeline()
         tl2.to('#attitude-circle', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
         tl2.to('.pitch-angles', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
-    
-        d3.select('#svgRight')
-        .append('path')
-        .attr('id','path-right')
-        .attr('d','M 129 97.5 L 50 100 L 129 100')
-        .style('fill','none')
-        .style('stroke','none')
-        
-        d3.select('#circle-right')
-        .append('animateMotion')
-        .attr('id','animate-right-circle')
-        .attr('path','M 129 97.5 L 50 100 L 129 100')
-        .attr('dur','10s')
-        .attr('begin','click')
-        .attr("repeatCount","1")
 
+        var path = d3.select('#svgRight').append("path")
+        .attr("d",'M 129 97.5 L 50 100 L 129 100')
         //document.getElementById("path-right").remove();
         //document.getElementById("animate-right-circle").remove();
+        d3.select('#circle-right')
+        .transition()
+			.duration(10000)
+			.tween("pathTween", function(){return pathTween(path)})
 
         var vid = document.getElementById("my-video");
         vid.play()
@@ -590,6 +610,17 @@ d3.select("#ECAM")
             .duration(500)
             .style("opacity", 0);
     });
+
+function pathTween(path){
+        var length = path.node().getTotalLength(); // Get the length of the path
+        var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+        return function(t){
+            var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+            d3.select(this) // Select the circle
+                .attr("cx", point.x) // Set the cx
+                .attr("cy", point.y) // Set the cy
+        }
+    }
 
 
 // d3.select('#play-button').style('opacity','1')
