@@ -26,7 +26,7 @@ var wayPointChart, ecam, sideStickDiagram, altimeterDiagram, attitudeDiagram, sp
 let activationFunctions = [draw0, draw1, draw2, draw3, draw4,
     draw5, draw6, draw7, draw8, draw9, draw10, draw11, draw12, draw13, draw14, draw15,
     draw16, draw17, draw18, draw19, draw20, draw21, draw22, draw23,draw24,
-    draw25,draw26]
+    draw25,draw26,draw27,draw28,draw29,draw30]
 
 var scroller = scrollama();
 
@@ -809,6 +809,339 @@ function draw26(){
                 .transition()
                 .duration(30000)
                 .tween("pathTween", function () { return pathTween(path) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
+}
+
+function draw27(){
+    document.getElementById("my-video").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage5.mp4')
+
+        d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad",{keyframes:[{ attr: { "y2": "30%" }, duration:5 },
+            { attr: { "y2": "31%" }, duration:5 },
+            { attr: { "y2": "30%" }, duration:5 },
+            { attr: { "y2": "0%" }, duration:5 },
+            { attr: { "y2": "-20%"}, duration:5 },
+            { attr: { "y2": "0%"}, duration:5 },
+            { attr: { "y2": "-20%"}, duration:5 }]}, 0)
+            tl1.to(".pitch-angles",{keyframes:[{ y: 70, duration:5 },
+                { y: 75, duration:5 },
+                { y: 0, duration:5 },
+                { y: -130, duration:5 },
+                { y: 0, duration:5 },
+                { y: -130, duration:5 }]}, 0)
+
+            let tl2 = gsap.timeline()
+             tl2.to('#attitude-circle', {
+                keyframes:  [{ rotation: 5, duration: 5 },
+                    { rotation: -3, duration: 5 },
+                    { rotation: 5, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 5 },
+                    { rotation: -2, duration: 5 }],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: 5, duration: 5 },
+                    { rotation: -3, duration: 5 },
+                    { rotation: 5, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 5 },
+                    { rotation: 2, duration: 5 }], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 36280 }, NewVal = 28300;
+
+            TweenLite.to(Cont, 34, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var pathR = d3.select('#svgRight').append("path")
+                .attr("d", 'M 50 150 L 0 180 L 0 200 L 0 200 L 0 200 L 0 200 L 0 200 L 0 180 L 50 180 L 0 180')
+                .attr("fill", "none")
+
+            var pathL = d3.select('#svgLeft').append("path")
+                .attr("d", 'M 129 97.5 L 0 100 L 129 100 L 0 100 L 129 100')
+                .attr("fill", "none")
+        
+            d3.select('#circle-right')
+                .transition()
+                .duration(34000)
+                .tween("pathTween", function () { return pathTween(pathR) })
+            d3.select('#left-circle')
+                .transition()
+                .duration(5000)
+                .tween("pathTween", function () { return pathTween(pathL) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
+}
+
+function draw28(){
+    document.getElementById("my-video").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage6.mp4')
+
+        d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad",{keyframes:[{ attr: { "y2": "30%" }, duration:10 },
+            { attr: { "y2": "31%" }, duration:5 },
+            { attr: { "y2": "33%" }, duration:5 },
+            { attr: { "y2": "0%" }, duration:5 }]}, 0)
+            tl1.to(".pitch-angles",{keyframes:[{ y: 80, duration:10 },
+                { y: 5, duration:5 },
+                { y: 7, duration:5 },
+                { y: -7, duration:5 }]}, 0)
+
+            let tl2 = gsap.timeline()
+             tl2.to('#attitude-circle', {
+                keyframes:  [{ rotation: -2, duration: 3 },
+                    { rotation: 3, duration: 3 },
+                    { rotation: -2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: -2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: -2, duration: 3 },
+                    { rotation: 2, duration: 2 }],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: -2, duration: 3 },
+                    { rotation: 3, duration: 3 },
+                    { rotation: -2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: -2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: 2, duration: 3 },
+                    { rotation: -2, duration: 3 },
+                    { rotation: 2, duration: 2 }], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 28300 }, NewVal = 20300;
+
+            TweenLite.to(Cont, 29, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var pathR = d3.select('#svgRight').append("path")
+                .attr("d", 'M 0 180 L 0 100 L 129 100 L 240 100 L 0 100 L 0 150 L 240 150 L 0 180 L 0 100 L 0 180 L 240 30 L 0 100 L 240 100 L 129 100')
+                .attr("fill", "none")
+
+            var pathL = d3.select('#svgLeft').append("path")
+                .attr("d", 'M 129 97.5 L 129 50 L 129 100')
+                .attr("fill", "none")
+        
+            d3.select('#circle-right')
+                .transition()
+                .duration(34000)
+                .tween("pathTween", function () { return pathTween(pathR) })
+            d3.select('#left-circle')
+                .transition()
+                .duration(9000)
+                .tween("pathTween", function () { return pathTween(pathL) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
+}
+
+function draw29(){
+    document.getElementById("my-video").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage7.mp4')
+
+        d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad",{keyframes:[{ attr: { "y2": "5%" }, duration:10 },
+            { attr: { "y2": "0%" }, duration:5 },
+            { attr: { "y2": "-5%" }, duration:5 },
+            { attr: { "y2": "-3%" }, duration:5 },
+            { attr: { "y2": "30%" }, duration:5 },
+            { attr: { "y2": "27%" }, duration:5 }]}, 0)
+            tl1.to(".pitch-angles",{keyframes:[{ y: 5, duration:10 },
+                { y: -5, duration:5 },
+                { y: -7, duration:5 },
+                { y: 5, duration:5 },
+                { y: 70, duration:5 },
+                { y: 50, duration:5 }]}, 0)
+
+            let tl2 = gsap.timeline()
+             tl2.to('#attitude-circle', {
+                keyframes:  [{ rotation: -10, duration: 5 },
+                    { rotation: 3, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 5, duration: 5 },
+                    { rotation: -20, duration: 5 },
+                    { rotation: 2, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 2 }],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: -10, duration: 5 },
+                    { rotation: 3, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 5, duration: 5 },
+                    { rotation: -20, duration: 5 },
+                    { rotation: 2, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 2 }], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 20300 }, NewVal = 10600;
+
+            TweenLite.to(Cont, 47, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var pathR = d3.select('#svgRight').append("path")
+                .attr("d", 'M 129 97.5 L 240 100 L 20 100 L 20 150 L 20 97 L 20 125 L 230 100 L 20 100 L 129 100 L 129 150 L 20 150 L 129 150 L 200 150 L 129 100 ')
+                .attr("fill", "none")
+
+            var pathL = d3.select('#svgLeft').append("path")
+                .attr("d", 'M 129 97.5 L 0 100 L 129 100 L 0 100 L 150 100')
+                .attr("fill", "none")
+        
+            d3.select('#circle-right')
+                .transition()
+                .duration(47000)
+                .tween("pathTween", function () { return pathTween(pathR) })
+            d3.select('#left-circle')
+                .transition()
+                .duration(9000)
+                .tween("pathTween", function () { return pathTween(pathL) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
+}
+
+function draw30(){
+    document.getElementById("my-video").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage8.mp4')
+
+        d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad",{keyframes:[{ attr: { "y2": "5%" }, duration:10 },
+            { attr: { "y2": "0%" }, duration:5 },
+            { attr: { "y2": "-5%" }, duration:5 },
+            { attr: { "y2": "-3%" }, duration:5 },
+            { attr: { "y2": "30%" }, duration:5 },
+            { attr: { "y2": "27%" }, duration:5 }]}, 0)
+            tl1.to(".pitch-angles",{keyframes:[{ y: 5, duration:10 },
+                { y: -5, duration:5 },
+                { y: -7, duration:5 },
+                { y: 5, duration:5 },
+                { y: 70, duration:5 },
+                { y: 50, duration:5 }]}, 0)
+
+            let tl2 = gsap.timeline()
+             tl2.to('#attitude-circle', {
+                keyframes:  [{ rotation: -10, duration: 5 },
+                    { rotation: 3, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 5, duration: 5 },
+                    { rotation: -20, duration: 5 },
+                    { rotation: 10, duration: 5 },
+                    { rotation: -20, duration: 5 },
+                    { rotation: 10, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 2 }],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: -10, duration: 5 },
+                    { rotation: 3, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 5, duration: 5 },
+                    { rotation: -20, duration: 5 },
+                    { rotation: 10, duration: 5 },
+                    { rotation: -20, duration: 5 },
+                    { rotation: 10, duration: 5 },
+                    { rotation: -2, duration: 5 },
+                    { rotation: 2, duration: 2 }], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 10600 }, NewVal = 0;
+
+            TweenLite.to(Cont, 60, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var pathR = d3.select('#svgRight').append("path")
+                .attr("d", 'M 129 97.5 L 0 100 L 150 100 L 230 100 L 129 100 L 129 150 L 0 150 L 50 150 L 150 30 L 129 100 L 0 150 L 50 120 L 0 150 L 150 30 L 129 150')
+                .attr("fill", "none")
+
+            var pathL = d3.select('#svgLeft').append("path")
+                .attr("d", 'M 129 97.5 L 100 120 L 129 100 L 129 30 L 129 100 L 130 30 L 100 50 L 50 50 L 105 50 L 40 50 L 129 100 L 129 150 L 200 150 L 129 170 L 200 100 L 200 50 L 129 170 L 250 150')
+                .attr("fill", "none")
+        
+            d3.select('#circle-right')
+                .transition()
+                .duration(60000)
+                .tween("pathTween", function () { return pathTween(pathR) })
+            d3.select('#left-circle')
+                .transition()
+                .duration(60000)
+                .tween("pathTween", function () { return pathTween(pathL) })
             d3.select("#mach-text")
                 .text("")
 
