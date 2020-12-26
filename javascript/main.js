@@ -25,7 +25,8 @@ var wayPointChart, ecam, sideStickDiagram, altimeterDiagram, attitudeDiagram, sp
 
 let activationFunctions = [draw0, draw1, draw2, draw3, draw4,
     draw5, draw6, draw7, draw8, draw9, draw10, draw11, draw12, draw13, draw14, draw15,
-    draw16, draw17, draw18, draw19, draw20]
+    draw16, draw17, draw18, draw19, draw20, draw21, draw22, draw23,draw24,
+    draw25,draw26]
 
 var scroller = scrollama();
 
@@ -277,10 +278,10 @@ function draw8() {
     d3.select('#plane-nose').style('stroke', 'yellow')
 
     d3.select('#plane-image')
-          .attr('src','../assets/airplane-pitch.gif')
-          .style('max-width','100%')
-          .style('max-height','100%')
-          .attr('transfor','translate(50,50)')
+        .attr('src', '../assets/airplane-pitch.gif')
+        .style('max-width', '100%')
+        .style('max-height', '100%')
+        .attr('transfor', 'translate(50,50)')
 
     noseUpDemo({ paused: false })
     noseDownDemo({ paused: true })
@@ -311,10 +312,10 @@ function draw10() {
     rotateLeft({ paused: false })
     rotateRight({ paused: true })
 
-     d3.select('#plane-image')
-           .attr('src','../assets/airplane-role.gif')
-           .style('max-width','100%')
-           .style('max-height','100%')
+    d3.select('#plane-image')
+        .attr('src', '../assets/airplane-role.gif')
+        .style('max-width', '100%')
+        .style('max-height', '100%')
 
 }
 function draw11() {
@@ -342,9 +343,9 @@ function draw12() {
     borderColorWhite(d3.select('#animation'))
 
     d3.select('#plane-image')
-           .attr('src','../assets/af447.jpg')
-           .style('max-width','100%')
-           .style('max-height','100%')
+        .attr('src', '../assets/af447.jpg')
+        .style('max-width', '100%')
+        .style('max-height', '100%')
 }
 
 function draw13() {
@@ -430,8 +431,8 @@ function draw18(response) {
     if (response.direction === 'up') {
         d3.select('#ecam-message')
             .text('Nominal')
-            .style('border-color','white')
-            .style('border-width','initial')
+            .style('border-color', 'white')
+            .style('border-width', 'initial')
     }
 }
 function draw19(response) {
@@ -444,54 +445,302 @@ function draw19(response) {
 
     d3.select('#ecam-message')
         .text('Flight Mode: Normal Law')
-        .style('border-color','red')
-        .style('border-width','medium')
+        .style('border-color', 'red')
+        .style('border-width', 'medium')
 }
 
 
-function draw20() {
-     d3.select('#play-button').style('opacity', '1')
-     d3.select('#restart-button').style('opacity', '1')
+function draw20(response) {
+    d3.select('#play-button').style('opacity', '1')
+    d3.select('#restart-button').style('opacity', '0')
 
-     d3.select('#ecam-message')
-     .text('Flight Mode: Normal Law')
-     .style('border-color','white')
-     .style('border-width','initial')
+    d3.select('#ecam-message')
+        .text('Flight Mode: Normal Law')
+        .style('border-color', 'white')
+        .style('border-width', 'initial')
 
-    document.getElementById("webGlCanvas").remove();
-    
+    if (response.direction === 'down') {
+        document.getElementById("webGlCanvas").remove();
+        d3.select('#media-player')
+            .append('video')
+            .attr('id', 'my-video')
+            .style('max-height', '100%')
+            .style('max-width', '100%')
+            .append('source')
+            .attr('src', '../assets/animation_clips/rotate_20.mp4')
+    }
+
+    if (response.direction === 'up') {
+        document.getElementById("plane-image").remove();
+        d3.select('#media-player')
+            .append('video')
+            .attr('id', 'my-video')
+            .style('max-height', '100%')
+            .style('max-width', '100%')
+            .append('source')
+            .attr('src', '../assets/animation_clips/rotate_20.mp4')
+
+        d3.select("#ap-text")
+            .text("AP ON")
+
+        d3.select('#ap-rect')
+            .style('stroke', 'none')
+    }
+
+
+    d3.select('#play-button')
+        .on('click', function () {
+            let tl2 = gsap.timeline()
+            tl2.to('#attitude-circle', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
+            tl2.to('.pitch-angles', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
+
+            var path = d3.select('#svgRight').append("path")
+                .attr("d", 'M 129 97.5 L 50 100 L 129 100')
+                .attr("fill", "none")
+            //document.getElementById("path-right").remove();
+            //document.getElementById("animate-right-circle").remove();
+            d3.select('#circle-right')
+                .transition()
+                .duration(10000)
+                .tween("pathTween", function () { return pathTween(path) })
+            d3.select("#mach-text")
+                .text("MACH .80")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+
+        })
+
+
+}
+
+function draw21() {
+
+    document.getElementById("my-video").remove();
+    document.getElementById("speed-scale-group").remove();
+
     d3.select('#media-player')
-        .append('video')
-        .attr('id','my-video')
-        .style('max-height','100%')
-        .style('max-width','100%')
-        .append('source')
+        .append('img')
         .attr('id', 'plane-image')
     d3.select('#plane-image')
-        .attr('src', '../assets/animation_clips/rotate_20.mp4')
+        .attr('src', '../assets/pitot_tube.png')
+
+    d3.select("#ap-text")
+        .text("AP OFF")
+
+    d3.select('#ap-rect')
+        .style('stroke-width', '2px')
+        .style('stroke', 'red')
+
+    borderColorRed(d3.select('#speed-scale'))
+
+    d3.select('#speed-svg')
+        .append('text')
+        .attr('fill', 'white')
+        .style('font-family', 'B612')
+        .attr('transform', 'translate(28,139)')
+        .text('NA')
 
 
-     d3.select('#play-button')
-       .on('click',function(){
-        let tl2 = gsap.timeline()
-        tl2.to('#attitude-circle', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
-        tl2.to('.pitch-angles', { duration: 5, rotation: 20, transformOrigin: "50%,50%", repeat: 1, yoyo: true }, 0)
+}
 
-        var path = d3.select('#svgRight').append("path")
-        .attr("d",'M 129 97.5 L 50 100 L 129 100')
-        //document.getElementById("path-right").remove();
-        //document.getElementById("animate-right-circle").remove();
-        d3.select('#circle-right')
-        .transition()
-			.duration(10000)
-			.tween("pathTween", function(){return pathTween(path)})
+function draw22() {
+    d3.select('#ecam-message')
+        .text('Flight Mode: Alternate Law')
+        .style('border-color', 'red')
+        .style('border-width', 'medium')
 
-        var vid = document.getElementById("my-video");
-        vid.play()
+    d3.select('#ap-rect')
+        .style('stroke', 'none')
+}
 
-    })
+function draw23() {
+    d3.select('#play-button').style('opacity', '1')
+    d3.select('#restart-button').style('opacity', '0')
+
+    d3.select('#ecam-message')
+        .style('border-color', 'white')
+
+    document.getElementById("plane-image").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage1.mp4')
 
 
+    d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad", 20, { attr: { "y2": "30%" } }, 0)
+            tl1.to(".pitch-angles", 20, { y: 70 }, 0)
+
+            let tl2 = gsap.timeline()
+            tl2.to('#attitude-circle', {
+                keyframes: [{ rotation: -10, duration: 3 },
+                { rotation: 20, duration: 3 },
+                { rotation: -30, duration: 3 },
+                { rotation: 10, duration: 3 },
+                { rotation: -10, duration: 3 },
+                { rotation: 1, duration: 2 },
+                { rotation: 1, duration: 1 },
+                { rotation: -1, duration: 1 }],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: -10, duration: 3 },
+                { rotation: 20, duration: 3 },
+                { rotation: -30, duration: 3 },
+                { rotation: 10, duration: 3 },
+                { rotation: -10, duration: 3 },
+                { rotation: 1, duration: 2 },
+                { rotation: 1, duration: 1 },
+                { rotation: -1, duration: 1 }], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 35000 }, NewVal = 36000;
+
+            TweenLite.to(Cont, 21, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var path = d3.select('#svgRight').append("path")
+                .attr("d", 'M 129 97.5 L 50 150 L 200 150 L 129 120 L 50 150 L 200 150 L 50 150 L 129 100 L 129 130 L 230 50 L 50 50 L 200 50 L 50 50 L 100 30 L 129 100')
+                .attr("fill", "none")
+            //document.getElementById("path-right").remove();
+            //document.getElementById("animate-right-circle").remove();
+            d3.select('#circle-right')
+                .transition()
+                .duration(21000)
+                .tween("pathTween", function () { return pathTween(path) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
+}
+
+function draw24() {
+    document.getElementById("my-video").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage2.mp4')
+
+        d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad", 23, { attr: { "y2": "20%" } }, 0)
+            tl1.to(".pitch-angles", 23, { y: 45 }, 0)
+
+            let tl2 = gsap.timeline()
+             tl2.to('#attitude-circle', {
+                keyframes: [{ rotation: 5, duration: 5 },
+                { rotation: -5, duration: 5 },
+                { rotation: 5, duration: 5 },
+                { rotation: -1, duration: 5 }],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: 5, duration: 5 },
+                    { rotation: -5, duration: 5 },
+                    { rotation: 5, duration: 5 },
+                    { rotation: -1, duration: 5 }], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 36000 }, NewVal = 37500;
+
+            TweenLite.to(Cont, 23, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var path = d3.select('#svgRight').append("path")
+                .attr("d", 'M 129 97.5 L 170 50 L 100 50 L 0 100 L 220 50 L 220 100 L 129 100 L 0 150 L 0 100 L 220 50 L 220 150 L 100 50 L 128 100')
+                .attr("fill", "none")
+            //document.getElementById("path-right").remove();
+            //document.getElementById("animate-right-circle").remove();
+            d3.select('#circle-right')
+                .transition()
+                .duration(23000)
+                .tween("pathTween", function () { return pathTween(path) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
+}
+
+function draw25(){
+    document.getElementById("my-video").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage3.mp4')
+
+        d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad", 15, { attr: { "y2": "30%" } }, 0)
+            tl1.to(".pitch-angles", 15, { y: 75 }, 0)
+
+            let tl2 = gsap.timeline()
+             tl2.to('#attitude-circle', {
+                keyframes:  [{ rotation: -2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: -2, duration: 2 },
+                    { rotation: -2, duration: 2 },
+                    { rotation: 1, duration: 2 },],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: -2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: -2, duration: 2 },
+                    { rotation: -2, duration: 2 },
+                    { rotation: 1, duration: 2 },], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 37500 }, NewVal = 37800;
+
+            TweenLite.to(Cont, 15, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var path = d3.select('#svgRight').append("path")
+                .attr("d", 'M 129 97.5 L 129 150 L 70 150 L 129 150 L 200 150 L 200 50 L 125 50 L 129 100 L 75 100 L 75 150 L 125 150 L 129 100')
+                .attr("fill", "none")
+        
+            d3.select('#circle-right')
+                .transition()
+                .duration(15000)
+                .tween("pathTween", function () { return pathTween(path) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
 }
 
 function borderColorRed(input) {
@@ -500,6 +749,72 @@ function borderColorRed(input) {
 
 function borderColorWhite(input) {
     input.style('border-color', 'white')
+}
+
+function draw26(){
+    document.getElementById("my-video").remove();
+    d3.select('#media-player')
+        .append('video')
+        .attr('id', 'my-video')
+        .style('max-height', '100%')
+        .style('max-width', '100%')
+        .append('source')
+        .attr('id','vid-source')
+        .attr('src', '../assets/animation_clips/stage4.mp4')
+
+        d3.select('#play-button')
+        .on('click', function () {
+            const tl1 = gsap.timeline()
+            tl1.to("#grad",{keyframes:[{ attr: { "y2": "20%" }, duration:5 },
+            { attr: { "y2": "30%" }, duration:5 },
+            { attr: { "y2": "20%" }, duration:5 },
+            { attr: { "y2": "30%" }, duration:5 },
+            { attr: { "y2": "20%" }, duration:5 }]}, 0)
+            tl1.to(".pitch-angles",{keyframes:[{ y: 40, duration:5 },
+                { y: 75, duration:5 },
+                { y: 40, duration:5 },
+                { y: 75, duration:5 },
+                { y: 45, duration:5 }]}, 0)
+
+            let tl2 = gsap.timeline()
+             tl2.to('#attitude-circle', {
+                keyframes:  [{ rotation: -2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: -2, duration: 2 },
+                    { rotation: -20, duration: 22 },],
+                transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+            tl2.to('.pitch-angles', {
+                keyframes: [{ rotation: -2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: 2, duration: 2 },
+                    { rotation: -2, duration: 2 },
+                    { rotation: -20, duration: 22 }], transformOrigin: "50%,50%", yoyo: false
+            }, 0)
+
+            var Cont = { val: 37800 }, NewVal = 36280;
+
+            TweenLite.to(Cont, 30, {
+                val: NewVal, roundProps: "val", onUpdate: function () {
+                    d3.select('#altitude-text').node().textContent = Cont.val
+                }
+            });
+
+            var path = d3.select('#svgRight').append("path")
+                .attr("d", 'M 129 97.5 L 50 130 L 50 170 L 50 100 L 129 100 L 220 100 L 129 100 L 129 150 L 200 170 L 129 100 L 129 150 L 50 150 L 129 100 L 129 150 L 129 100 L 50 100 L 129 100 L 50 100 L 129 100 L 50 150')
+                .attr("fill", "none")
+        
+            d3.select('#circle-right')
+                .transition()
+                .duration(30000)
+                .tween("pathTween", function () { return pathTween(path) })
+            d3.select("#mach-text")
+                .text("")
+
+            var vid = document.getElementById("my-video");
+            vid.play()
+        })
 }
 
 init();
@@ -611,16 +926,16 @@ d3.select("#ECAM")
             .style("opacity", 0);
     });
 
-function pathTween(path){
-        var length = path.node().getTotalLength(); // Get the length of the path
-        var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
-        return function(t){
-            var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
-            d3.select(this) // Select the circle
-                .attr("cx", point.x) // Set the cx
-                .attr("cy", point.y) // Set the cy
-        }
+function pathTween(path) {
+    var length = path.node().getTotalLength(); // Get the length of the path
+    var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+    return function (t) {
+        var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+        d3.select(this) // Select the circle
+            .attr("cx", point.x) // Set the cx
+            .attr("cy", point.y) // Set the cy
     }
+}
 
 
 // d3.select('#play-button').style('opacity','1')

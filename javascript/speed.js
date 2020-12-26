@@ -4,6 +4,7 @@ class speed {
         this.speedHeight = d3.select('#speed-scale')._groups[0][0].clientHeight
 
         this.speedSvg = d3.select('#speed-scale').append('svg')
+                          .attr('id','speed-svg')
                           .attr('width',this.speedWidth)
                           .attr('height',this.speedHeight)
 
@@ -22,6 +23,7 @@ class speed {
               } 
           })
           this.speedSvg.append('g')
+          .attr('id','speed-scale-group')
           .attr('transform',`translate(${this.speedWidth},0)`)
           .attr('color','white')
           .style('font-size','15px')

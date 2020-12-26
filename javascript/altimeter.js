@@ -15,13 +15,10 @@ class altimeter {
         this.altAxis.ticks(10)
         
         this.altAxis.tickFormat(function (d) { 
-            if(d===345 || d===355){
-                return d
-            }else{
                 return ''
-            } 
         })
         this.axis=this.altSvg.append('g')
+        .attr('id','alt-axis')
         .attr('transform',`translate(${this.altWidth},0)`)
         .attr('color','white')
         .style('font-size','15px')
